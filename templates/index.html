@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rift Idea Generator</title>
+    <style>
+        body { font-family: sans-serif; text-align: center; padding: 50px; background-color: #f4f4f4; }
+        .box { background: white; padding: 20px; border-radius: 10px; display: inline-block; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        button { padding: 10px 20px; font-size: 16px; cursor: pointer; background-color: #007acc; color: white; border: none; border-radius: 5px; }
+        button:hover { background-color: #005f9e; }
+        #result { margin-top: 20px; font-size: 18px; font-weight: bold; color: #333; }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h1>🚀 Rift Hackathon Idea Gen</h1>
+        <p>Stuck? Click below.</p>
+        <button onclick="getIdea()">Generate Idea</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        // This JavaScript talks to your Python Backend!
+        async function getIdea() {
+            const response = await fetch('/idea'); // Calls your Python function
+            const data = await response.json();    // Reads the JSON data
+            document.getElementById('result').innerText = 
+                "💡 " + data.project_idea + " (" + data.difficulty + ")";
+        }
+    </script>
+</body>
+</html>

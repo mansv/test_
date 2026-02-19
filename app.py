@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, render_template
 import random
 
 app = Flask(__name__)
@@ -14,7 +14,7 @@ ideas = [
 
 @app.route('/')
 def home():
-    return "Welcome to the Rift Hackathon API! Go to /idea to get an idea."
+    return render_template('index.html')
 
 @app.route('/idea', methods=['GET'])
 def get_idea():
